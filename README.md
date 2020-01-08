@@ -205,4 +205,13 @@ Once you have your process nailed:
 
 Continue writing tests and refactoring until you have a `fizzbuzz` function that works for any number.
 
-If you finish early try writing tests for (and handling) edge-cases (what happens when your function is called with a negative number?)
+If you finish early:
+
+- Write tests for (and handling) edge-cases (what happens when your function is called with a negative number?)
+- Add a new case where:
+  - If the number is a multiple of `7`, you return `"Bang"`
+  - If the number is a multiple of `3` and `7`, you return `"FizzBang"`
+  - If the number is a multiple of `5` and `7`, you return `"BuzzBang"`
+  - If the number is a multiple of `3`, `5` and `7`, you return `"FizzBuzzBang"`
+
+(**Note**: Remember to refactor once the tests are passing)
