@@ -48,7 +48,7 @@ This is also called the **Red-Green-Refactor** cycle of TDD.
 
 Clone the repository by copy-pasting the following command into your terminal:
 ```
-git clone https://github.com/foundersandcoders/fizzbuzz.git && cd fizzbuzz
+git clone https://github.com/FACN8/fizzbuzz.git && cd fizzbuzz
 ```
 
 Install the dependencies (Jest) with:
