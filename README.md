@@ -48,14 +48,17 @@ This is also called the **Red-Green-Refactor** cycle of TDD.
 
 Clone the repository by copy-pasting the following command into your terminal:
 ```
-git clone https://github.com/foundersandcoders/fizzbuzz.git && cd fizzbuzz
+git clone https://github.com/FACN8/fizzbuzz.git && cd fizzbuzz
 ```
 
-Install the dependencies (Tape and Tap-spec) with:
+Install the dependencies (Jest) with:
 `npm install`
 
 Run the example test with:
 `npm test`
+
+Run the tests in watch-mode (they will be re-ran everytime you save):
+`npm run test:watch`
 
 ### 2. Go to test.js
 
@@ -64,11 +67,14 @@ Run the example test with:
 We will start by writing the most simple unit test of all, a unit test that will output the first number:
 
 ```javascript
-test('Testing fizzbuzz return value', function(t) {
-  var actual = fizzbuzz(1);
-  var expected = 1;
-  t.equal(actual, expected, 'Should return 1 when given 1');
-  t.end();
+describe('fizzbuzz', function() {
+  describe('If the input is not a multiple of 3 or 5', function() {
+    it('should return 1, if the input is 1', function() {
+      var actual = fizzbuzz(1);
+      var expected = 1;
+      expect(actual).toBe(expected);
+    });
+  });
 });
 ```
 **Run the test with `npm test`**
@@ -94,11 +100,20 @@ Let’s now get the first two numbers.
 Add a unit test to `test.js` to check if our function returns 2:
 
 ```javascript
-test('Testing fizzbuzz return value', function(t) {
-  var actual = fizzbuzz(2);
-  var expected = 2;
-  t.equal(actual, expected, 'Should return 2 when given 2');
-  t.end();
+describe('fizzbuzz', function() {
+  describe('If the input is not a multiple of 3 or 5', function() {
+    it('should return 1, if the input is 1', function() {
+      var actual = fizzbuzz(1);
+      var expected = 1;
+      expect(actual).toBe(expected);
+    });
+
+    it('should return 2, if the input is 2', function() {
+      var actual = fizzbuzz(2);
+      var expected = 2;
+      expect(actual).toBe(expected);
+    });
+  });
 });
 ```
 The test fails because it expects **2** but gets **1**.
@@ -124,11 +139,28 @@ Well, that was easy, but we're not quite there yet. Let’s now get the first th
 Let's write a test:
 
 ```javascript
-test('Testing fizzbuzz return value', function(t) {
-  var actual = fizzbuzz(3);
-  var expected = 'Fizz';
-  t.equal(actual, expected, 'Should return Fizz when given 3');
-  t.end();
+describe('fizzbuzz', function() {
+  describe('If the input is not a multiple of 3 or 5', function() {
+    it('should return 1, if the input is 1', function() {
+      var actual = fizzbuzz(1);
+      var expected = 1;
+      expect(actual).toBe(expected);
+    });
+
+    it('should return 2, if the input is 2', function() {
+      var actual = fizzbuzz(2);
+      var expected = 2;
+      expect(actual).toBe(expected);
+    });
+  });
+
+  describe('If the input is a multiple of 3', function() {
+    it('should return `Fizz`, if the input is 3', function() {
+      var actual = fizzbuzz(3);
+      var expected = 'Fizz';
+      expect(actual).toBe(expected);
+    })
+  });
 });
 ```
 The test fails because it expects **Fizz** but gets **1**.
@@ -173,4 +205,13 @@ Once you have your process nailed:
 
 Continue writing tests and refactoring until you have a `fizzbuzz` function that works for any number.
 
-If you finish early try writing tests for (and handling) edge-cases (what happens when your function is called with a negative number?)
+If you finish early:
+
+- Write tests for (and handling) edge-cases (what happens when your function is called with a negative number?)
+- Add a new case where:
+  - If the number is a multiple of `7`, you return `"Bang"`
+  - If the number is a multiple of `3` and `7`, you return `"FizzBang"`
+  - If the number is a multiple of `5` and `7`, you return `"BuzzBang"`
+  - If the number is a multiple of `3`, `5` and `7`, you return `"FizzBuzzBang"`
+
+(**Note**: Remember to refactor once the tests are passing)
